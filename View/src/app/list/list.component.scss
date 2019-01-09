@@ -1,6 +1,10 @@
 .myList{
-    height:200px;
+    height:400px;
     width: 400px;
+  
+      background-image:url("src/assets/back.jpg");
+    
+  
     background-color: burlywood;
     margin-right:auto;
     margin-left:auto;
@@ -15,4 +19,29 @@
   /*  text-shadow: 2px 2px #505050; */
     font-size: 50px;  
   margin-top:15px;
+  margin-bottom:20px;
+}
+
+.checkB{
+  margin-top:35px!important;
+  margin-left:20px;
+}
+
+.checked{
+  text-decoration: line-through; 
+}
+
+.addBtn{
+  height:fit-content;
+  width:fit-content;
+  margin-right:auto;
+  margin-left:auto;
+  margin-bottom:20px;
+}
+
+.inputField{
+  margin-right:auto;
+  margin-left:auto;
+  height:fit-content;
+  width:fit-content;
 }

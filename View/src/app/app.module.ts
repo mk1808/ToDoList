@@ -8,7 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ListViewComponent } from './list-view/list-view.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule, MatButtonModule } from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,11 @@ import { ListViewComponent } from './list-view/list-view.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule
     
   ],
   providers: [],

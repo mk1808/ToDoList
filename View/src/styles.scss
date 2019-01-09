@@ -4,3 +4,15 @@
 body{
     background-color: #1d1d1d;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-checkbox-inner-container{
+    height:22px!important;
+    width:22px!important;
+  }
+
+  .mat-checkbox-layout .mat-checkbox-label{
+      font-size:25px;
+  }
