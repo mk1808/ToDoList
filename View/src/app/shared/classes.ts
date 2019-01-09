@@ -2,7 +2,7 @@ export class List{
 
     id:number;
     name:string;
-    due_date:string;
+    dueDate:string;
     description:string;
 
 }

@@ -11,6 +11,8 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {MatInputModule} from '@angular/material/input';
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
-    ListViewComponent
+    ListViewComponent,
+    ManyListsViewComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
     
   ],
   providers: [],

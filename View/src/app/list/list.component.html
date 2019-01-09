@@ -4,19 +4,22 @@
             lista zadań
         </div>
         <div class="addBtn">
-            <button mat-fab color="primary"><i class="material-icons">
+            <button mat-fab color="primary" (click)="onAdd()"><i class="material-icons">
                     add
                 </i></button>
         </div>
         <div class="inputField">
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" *ngIf="addInput" >
                     <mat-label>Outline form field</mat-label>
-                <input matInput  />
+                <input #box (keyup.enter)="onEnter(box.value)"
+                 [formControl]="newTask" matInput  />
             </mat-form-field>
+            
         </div>
-        <div>
-            <mat-checkbox color="primary" class="checkB">Check me!</mat-checkbox>
+        <div *ngFor="let task of tasksString; let i=index;">
+            <mat-checkbox color="primary" class="checkB" (onChange)="onChange($event)"
+            >{{task}}</mat-checkbox>
 
 
         </div>
