@@ -1,4 +1,4 @@
-<div>
+<div [formGroup]="newTaskForm">
     <div class="myList">
         <div class="title">
             lista zadań
@@ -13,16 +13,25 @@
             <mat-form-field appearance="outline" *ngIf="addInput" >
                     <mat-label>Outline form field</mat-label>
                 <input #box (keyup.enter)="onEnter(box.value)"
-                 [formControl]="newTask" matInput  />
+                 formControlName="newTask" matInput  />
             </mat-form-field>
             
         </div>
-        <div *ngFor="let task of tasksString; let i=index;">
-            <mat-checkbox color="primary" class="checkB" (onChange)="onChange($event)"
+        <div *ngFor="let task of tasksString; let i=index;" class="bottomList">
+            <mat-checkbox color="primary" class="checkB" (click)="onChange()"
+           
             >{{task}}</mat-checkbox>
 
-
+            <i class="material-icons ">
+                clear
+                </i>
         </div>
+
+            
 
     </div>
 </div>
+
+        
+
+            

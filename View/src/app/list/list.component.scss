@@ -1,9 +1,9 @@
 .myList{
-    height:400px;
+   min-height:400px;
     width: 400px;
   
       background-image:url("src/assets/back.jpg");
-    
+    height:auto;
   
     background-color: burlywood;
     margin-right:auto;
@@ -44,4 +44,8 @@
   margin-left:auto;
   height:fit-content;
   width:fit-content;
+}
+
+.bottomList{
+  padding-bottom:20px;
 }

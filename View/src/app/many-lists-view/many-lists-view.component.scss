@@ -1,0 +1,29 @@
+.backgr{
+    background-image:url("src/assets/back.jpg");
+}
+
+.brdr{
+    border:none;
+    min-height:200px;
+}
+
+
+.addBtn{
+    height:fit-content;
+    width:fit-content;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom:10px;
+  }
+
+  .inputField{
+    margin-right:auto;
+    margin-left:auto;
+    height:100px;
+    width:fit-content;
+    overflow-y:scroll;
+  }
+
+  .mat-form-field{
+      width:100%;
+  }

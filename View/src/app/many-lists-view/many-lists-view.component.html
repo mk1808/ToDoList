@@ -1,3 +1,56 @@
-<p>
-  many-lists-view works!
-</p>
+<div fxLayout="row"  *ngFor="let row of TTable">
+<div class="col-md-4" *ngFor="let list of row ">
+    <div class="card mb-4 box-shadow brdr">
+      <img class="card-img-top" >
+      <div class="card-body backgr">
+        <div class="card-text" *ngIf="list==[]; else notNew">
+          
+              <div class="inputField">
+
+                  <mat-form-field appearance="outline"  >
+                          <mat-label>Outline form field</mat-label>
+                      <input 
+                        matInput  />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline"  >
+                      <mat-label>Outline form field</mat-label>
+                  <input 
+                    matInput type="date"  />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline"  >
+                  <mat-label>Outline form field</mat-label>
+              <textarea
+                matInput  >
+                </textarea>
+          </mat-form-field>
+                  
+             
+              
+          </div>
+          <div  class="addBtn">
+              <button mat-fab color="primary" ><i class="material-icons">
+                  add
+              </i></button> <br>
+          </div>
+      
+
+        </div>
+          <ng-template #notNew>
+              <div class="card-text">
+         
+
+                  This is a wider card with supporting text below as a natural 
+                  lead-in to additional content. This content is a little bit longer. {{list}}</div> 
+          </ng-template>
+        <div class="d-flex justify-content-between align-items-center">
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+

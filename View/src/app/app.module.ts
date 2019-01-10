@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
@@ -13,6 +12,7 @@ import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,9 @@ import { ManyListsViewComponent } from './many-lists-view/many-lists-view.compon
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
+    
     
   ],
   providers: [],
