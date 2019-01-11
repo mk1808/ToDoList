@@ -1,56 +1,65 @@
-<div fxLayout="row"  *ngFor="let row of TTable">
-<div class="col-md-4" *ngFor="let list of row ">
+<form [formGroup]="newListForm">
+<div fxLayout="row" *ngFor="let row of TTable">
+  <div class="col-md-4" *ngFor="let list of row ">
     <div class="card mb-4 box-shadow brdr">
-      <img class="card-img-top" >
+      <img class="card-img-top">
       <div class="card-body backgr">
         <div class="card-text" *ngIf="list==[]; else notNew">
-          
-              <div class="inputField">
 
-                  <mat-form-field appearance="outline"  >
-                          <mat-label>Outline form field</mat-label>
-                      <input 
-                        matInput  />
-                  </mat-form-field>
-                  <mat-form-field appearance="outline"  >
-                      <mat-label>Outline form field</mat-label>
-                  <input 
-                    matInput type="date"  />
-              </mat-form-field>
+          <div class="inputField">
 
-              <mat-form-field appearance="outline"  >
-                  <mat-label>Outline form field</mat-label>
-              <textarea
-                matInput  >
+            <mat-form-field appearance="outline">
+              <mat-label>Nazwa</mat-label>
+              <input matInput formControlName="name"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Data wykonania</mat-label>
+              <input matInput type="date" formControlName="dueDate" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Opis</mat-label>
+              <textarea matInput formControlName="description">
                 </textarea>
-          </mat-form-field>
-                  
-             
-              
+            </mat-form-field>
+
+
+
           </div>
-          <div  class="addBtn">
-              <button mat-fab color="primary" ><i class="material-icons">
-                  add
+          <div class="addBtn">
+            <button mat-fab color="primary" (click)="onAddList()"><i class="material-icons">
+                add
               </i></button> <br>
           </div>
-      
+
 
         </div>
-          <ng-template #notNew>
-              <div class="card-text">
-         
+        <ng-template #notNew>
+          <div class="card-text listCard" (click)="onClickList(list.id)">
+            <div class="title">
+              {{list.name}} <br>
+            </div>
 
-                  This is a wider card with supporting text below as a natural 
-                  lead-in to additional content. This content is a little bit longer. {{list}}</div> 
-          </ng-template>
+            <div class="descrip">
+                <i class="material-icons">
+                    date_range
+                    </i> {{list.dueDate}}<br>
+</div>
+            <div class="descrip">
+              {{list.description}}<br>
+            </div>
+
+            
+
+          </div>
+        </ng-template>
         <div class="d-flex justify-content-between align-items-center">
-          
-          
+
+
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>
-
-
+</form>

@@ -5,7 +5,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
 
 const routes: Routes = [
-  { path: 'list', component: ListViewComponent },
+  { path: 'list/:id', component: ListViewComponent },
   { path: 'lists', component:ManyListsViewComponent}
 ];
 

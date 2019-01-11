@@ -36,7 +36,7 @@ public getLists(): Observable<List[]> {
 
 
 public getTasksForList(id): Observable<any> {
-  return this.http.get<any>('http://localhost/todo/controllers/getTasksForList.php?id=',id);
+  return this.http.get<any>('http://localhost/todo/controllers/getTasksForList.php?id='+id);
 
 }
 }

@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import {  HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
     
     
   ],
