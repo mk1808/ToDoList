@@ -39,4 +39,14 @@ public getTasksForList(id): Observable<any> {
   return this.http.get<any>('http://localhost/todo/controllers/getTasksForList.php?id='+id);
 
 }
+
+public getListDetails(id): Observable<List> {
+  return this.http.get<any>('http://localhost/todo/controllers/getListDetails.php?id='+id);
+
+}
+
+public updateTask(task:Task): Observable<Task> {
+  return this.http.post<any>('http://localhost/todo/controllers/updateTask.php',
+  JSON.stringify(task));
+}
 }

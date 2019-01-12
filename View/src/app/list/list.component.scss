@@ -49,3 +49,13 @@
 .bottomList{
   padding-bottom:20px;
 }
+
+.doneTask{
+  text-decoration: line-through;
+  color:#717171;
+}
+
+.noDoneTask{
+  text-decoration: none;
+  color:black;
+}

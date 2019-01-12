@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from 'node_modules/@angular/forms';
-import { Task } from '../shared/classes';
+import { Task, List } from '../shared/classes';
 import { FormBuilder } from 'node_modules/@angular/forms';
+import { ToDoService } from '../shared/to-do.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -12,19 +14,52 @@ export class ListComponent implements OnInit {
 
   addInput: boolean = false;
   value: string;
- // newTask = new FormControl('');
+  // newTask = new FormControl('');
   newTaskForm: FormGroup;
-  tasks:Task[]=[];
-  tasksString:string[]=['task1aa','taska2','taaask3 jilij wijsk seik ekkdekdkkdn kdkkddddddd dddddkdkd'];
+  tasks: Task[] = [];
+  list: List = new List;
+  newTask: Task = new Task;
+  updatedTask: Task = new Task;
+  status:boolean;
 
+  id: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private todo: ToDoService, private fb: FormBuilder,
+    private router: Router, private route: ActivatedRoute) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log("aaa", this.id);
+  }
 
   ngOnInit() {
     this.newTaskForm = this.fb.group({
       newTask: []
 
-  });
+    });
+
+    this.todo.getListDetails(this.id).subscribe(x => {
+      console.log(x);
+      this.list = x;
+    });
+    this.todo.getTasksForList(this.id).subscribe(x => {
+
+      this.tasks = x;
+      console.log(this.tasks);
+
+      let i: number = 0;
+      this.tasks.forEach(element => {
+    
+  
+        i++;
+      
+        this.newTaskForm.addControl(('element' + i.toString()), new FormControl(false));
+        
+  
+      });
+    });
+
+
+  
+
 
   }
   onAdd() {
@@ -33,12 +68,38 @@ export class ListComponent implements OnInit {
     }
   }
   onEnter(value: string) {
-    this.value = value;
-    console.log(this.value);
+
+    console.log(value);
+    this.newTask.name = value;
+    this.newTask.idList = this.id;
+    this.newTask.status = false;
     this.newTaskForm.controls.newTask.setValue(" ");
-    this.tasksString.push(this.value);
+
+    this.todo.createTask(this.newTask).subscribe(x => {
+      console.log(x);
+      this.ngOnInit();
+    })
+
   }
-  onChange(){
-    console.log("a");
-  }
+
+ onChange(event, task:Task, id){
+   console.log(event.checked, task);
+   
+if(this.tasks[id].status==true){
+  this.tasks[id].status=false;
+}
+else
+{this.tasks[id].status=true;}
+
+   this.updatedTask.id=task.id;
+   this.updatedTask.name=task.name;
+   this.updatedTask.status=event.checked;
+   this.updatedTask.idList=task.idList;
+
+   this.todo.updateTask(this.updatedTask).subscribe(x=>{
+     
+     console.log(x);
+   })
+
+ }
 }

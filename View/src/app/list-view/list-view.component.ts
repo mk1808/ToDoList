@@ -10,21 +10,15 @@ import { Task, List } from '../shared/classes';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-id:any;
-myList:List;
-  
+
 
   constructor(private todo:ToDoService,private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute) {
-    this.id=this.route.snapshot.paramMap.get('id');
-   console.log(this.id);
+    
   }
 
   ngOnInit() {
-    this.todo.getTasksForList(this.id).subscribe(x=>
-      {
-        console.log(x);
-      })
+   
   }
 
 }
