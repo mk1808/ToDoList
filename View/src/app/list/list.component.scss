@@ -59,3 +59,11 @@
   text-decoration: none;
   color:black;
 }
+
+.deleteIcon{
+  cursor: pointer;
+}
+
+.deleteIcon:hover{
+  background-color: rgba(142, 120, 49, 0.4);
+}

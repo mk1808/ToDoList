@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   list: List = new List;
   newTask: Task = new Task;
   updatedTask: Task = new Task;
-  status:boolean;
+  status: boolean;
 
   id: any;
 
@@ -47,18 +47,18 @@ export class ListComponent implements OnInit {
 
       let i: number = 0;
       this.tasks.forEach(element => {
-    
-  
+
+
         i++;
-      
+
         this.newTaskForm.addControl(('element' + i.toString()), new FormControl(false));
-        
-  
+
+
       });
     });
 
 
-  
+
 
 
   }
@@ -82,24 +82,34 @@ export class ListComponent implements OnInit {
 
   }
 
- onChange(event, task:Task, id){
-   console.log(event.checked, task);
-   
-if(this.tasks[id].status==true){
-  this.tasks[id].status=false;
-}
-else
-{this.tasks[id].status=true;}
+  onChange(event, task: Task, id) {
+    console.log(event.checked, task);
 
-   this.updatedTask.id=task.id;
-   this.updatedTask.name=task.name;
-   this.updatedTask.status=event.checked;
-   this.updatedTask.idList=task.idList;
+    if (this.tasks[id].status == true) {
+      this.tasks[id].status = false;
+    }
+    else { this.tasks[id].status = true; }
 
-   this.todo.updateTask(this.updatedTask).subscribe(x=>{
-     
-     console.log(x);
-   })
+    this.updatedTask.id = task.id;
+    this.updatedTask.name = task.name;
+    this.updatedTask.status = event.checked;
+    this.updatedTask.idList = task.idList;
 
- }
+    this.todo.updateTask(this.updatedTask).subscribe(x => {
+
+      console.log(x);
+    })
+
+  }
+
+  onDelete(task: Task) {
+    console.log(task.id);
+    this.todo.deleteTask(task.id).subscribe(x=>
+      {
+        console.log(x);
+        this.ngOnInit();
+      })
+
+
+  }
 }
