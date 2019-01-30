@@ -24,7 +24,7 @@ export class ManyListsViewComponent implements OnInit {
     private router: Router, private route: ActivatedRoute) { }
   
   ngOnInit() {
-
+    this.allListTable=[];
     this.newListForm = this.fb.group({
       name: [''],
       description: [''],
@@ -40,7 +40,7 @@ export class ManyListsViewComponent implements OnInit {
     this.todo.getLists().subscribe(x=>
     {
       
-      console.log(x);
+    
       this.allListTable=x;
         this.to2DTable(this.allListTable);
     })
@@ -50,7 +50,7 @@ export class ManyListsViewComponent implements OnInit {
   }
 
   to2DTable(table: List[]) {
-    
+    this.TTable=[];
     let myRow: any[] = [];
     let i: number = 1;
     let j: number = 0;
@@ -58,7 +58,7 @@ export class ManyListsViewComponent implements OnInit {
     let ii: number;
     myRow.push("");
     table.forEach(element => {
-      console.log(myRow);
+    //  console.log(myRow);
      
       if (i < 3) {
 
@@ -132,13 +132,14 @@ onEdit(list:any){
   }
 }
 
-onDelete(id:any){
-this.todo.deleteList(id).subscribe(x=>
+onDelete(list:List){
+this.todo.deleteList(list).subscribe(x=>
   {
     console.log(x);
-    this.ngOnInit();
+   this.ngOnInit();
   })
-}
+  
+} 
 
 onEditList(list:any){
   list.editList=false;
