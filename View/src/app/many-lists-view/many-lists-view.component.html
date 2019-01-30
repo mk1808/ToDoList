@@ -1,11 +1,12 @@
-<form [formGroup]="newListForm">
+
   <div fxLayout="row" *ngFor="let row of TTable">
     <div class="col-md-4" *ngFor="let list of row ">
       <div class="card mb-4 box-shadow brdr">
         <img class="card-img-top">
         <div class="card-body backgr">
+            
           <div class="card-text" *ngIf="list==[]; else notNew">
-
+              <form [formGroup]="newListForm"> 
             <div class="inputField">
               <mat-form-field appearance="outline">
                 <mat-label>Nazwa</mat-label>
@@ -30,9 +31,10 @@
                   add
                 </i></button> <br>
             </div>
-
+</form>
 
           </div>
+          
           <ng-template #notNew>
 
             <div *ngIf="!list.editList else edit" class="card-text listCard">
@@ -57,18 +59,22 @@
               </div>
             </div>
             <ng-template #edit>
+                <form [formGroup]="editListForm">
                 <mat-form-field appearance="outline">
                     <mat-label>Nazwa</mat-label>
-                    <input matInput [(ngModel)]="list.name"/>
+                    <input matInput 
+                    formControlName="name" [(ngModel)]="list.name"/>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                       <mat-label>Data wykonania</mat-label>
-                      <input matInput type="date" [value]="list.dueDate" />
+                      <input matInput type="date"
+                      formControlName="dueDate"[(ngModel)]="list.dueDate" />
                     </mat-form-field>
       
                     <mat-form-field appearance="outline">
                       <mat-label>Opis</mat-label>
-                      <textarea matInput [value]="list.description">
+                      <textarea matInput 
+                      formControlName="description" [(ngModel)]="list.description">
                       </textarea>
                     </mat-form-field>
 
@@ -78,6 +84,7 @@
                             add
                           </i></button> <br>
                       </div>
+</form>
             </ng-template>
           </ng-template>
           <div class="d-flex justify-content-between align-items-center">
@@ -89,4 +96,3 @@
     </div>
 
   </div>
-</form>

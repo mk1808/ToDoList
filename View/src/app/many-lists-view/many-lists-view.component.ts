@@ -17,6 +17,7 @@ export class ManyListsViewComponent implements OnInit {
   TTable: any[][] = [];
   allListTable:List[];
   newListForm:FormGroup;
+  editListForm:FormGroup;
   newList:List=new List;
   editList:boolean=false;
   constructor( private todo:ToDoService,private fb: FormBuilder,
@@ -25,6 +26,12 @@ export class ManyListsViewComponent implements OnInit {
   ngOnInit() {
 
     this.newListForm = this.fb.group({
+      name: [''],
+      description: [''],
+      dueDate: ['']
+    });
+
+    this.editListForm = this.fb.group({
       name: [''],
       description: [''],
       dueDate: ['']
@@ -117,7 +124,12 @@ onClickList(id:number){
 }
 
 onEdit(list:any){
+  if (!this.editList){
   list.editList=true;
+  this.editList=true;}
+  else {
+    console.log("juz edytujesz!")
+  }
 }
 
 onDelete(id:any){
@@ -128,8 +140,10 @@ this.todo.deleteList(id).subscribe(x=>
   })
 }
 
-onEditList(list:List){
-
+onEditList(list:any){
+  list.editList=false;
   console.log(list);
+  this.editList=false;
+  
 }
 }
