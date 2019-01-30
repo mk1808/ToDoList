@@ -10,7 +10,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {  HttpClientModule } from '@angular/common/http';
@@ -35,7 +35,8 @@ import {  HttpClientModule } from '@angular/common/http';
     MatInputModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
     
     
   ],

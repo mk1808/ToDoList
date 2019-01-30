@@ -21,7 +21,7 @@ export class ManyListsViewComponent implements OnInit {
   editList:boolean=false;
   constructor( private todo:ToDoService,private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute) { }
-
+  
   ngOnInit() {
 
     this.newListForm = this.fb.group({
@@ -116,8 +116,8 @@ onClickList(id:number){
 
 }
 
-onEdit(list:List){
-  this.editList=true;
+onEdit(list:any){
+  list.editList=true;
 }
 
 onDelete(id:any){
@@ -126,5 +126,10 @@ this.todo.deleteList(id).subscribe(x=>
     console.log(x);
     this.ngOnInit();
   })
+}
+
+onEditList(list:List){
+
+  console.log(list);
 }
 }

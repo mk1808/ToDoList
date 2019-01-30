@@ -35,7 +35,7 @@
           </div>
           <ng-template #notNew>
 
-            <div *ngIf="!editList else edit" class="card-text listCard">
+            <div *ngIf="!list.editList else edit" class="card-text listCard">
 
               <i class="material-icons edit " (click)="onEdit(list)">
                 edit
@@ -59,8 +59,25 @@
             <ng-template #edit>
                 <mat-form-field appearance="outline">
                     <mat-label>Nazwa</mat-label>
-                    <input matInput />
+                    <input matInput [(ngModel)]="list.name"/>
                   </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Data wykonania</mat-label>
+                      <input matInput type="date" [value]="list.dueDate" />
+                    </mat-form-field>
+      
+                    <mat-form-field appearance="outline">
+                      <mat-label>Opis</mat-label>
+                      <textarea matInput [value]="list.description">
+                      </textarea>
+                    </mat-form-field>
+
+                    <div class="addBtn">
+                        <button mat-fab color="primary" (click)="onEditList(list)">
+                          <i class="material-icons">
+                            add
+                          </i></button> <br>
+                      </div>
             </ng-template>
           </ng-template>
           <div class="d-flex justify-content-between align-items-center">
