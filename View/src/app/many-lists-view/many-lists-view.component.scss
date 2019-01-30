@@ -36,6 +36,8 @@
     font-size: 25px;  
   margin-top:2px;
   margin-bottom:20px;
+  
+  cursor:pointer;
 }
 
 .descrip{
@@ -43,6 +45,20 @@
     font-size: 20px;
 }
 
-.listCard{
+.delete{
+    cursor:pointer; 
+}
+
+.edit{
     cursor:pointer;
 }
+
+.delete:hover{
+    background-color: rgba(142, 120, 49, 0.4);
+  }
+
+
+
+.edit:hover{
+    background-color: rgba(142, 120, 49, 0.4);
+  }

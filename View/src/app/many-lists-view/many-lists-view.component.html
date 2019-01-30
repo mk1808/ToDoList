@@ -1,65 +1,75 @@
 <form [formGroup]="newListForm">
-<div fxLayout="row" *ngFor="let row of TTable">
-  <div class="col-md-4" *ngFor="let list of row ">
-    <div class="card mb-4 box-shadow brdr">
-      <img class="card-img-top">
-      <div class="card-body backgr">
-        <div class="card-text" *ngIf="list==[]; else notNew">
+  <div fxLayout="row" *ngFor="let row of TTable">
+    <div class="col-md-4" *ngFor="let list of row ">
+      <div class="card mb-4 box-shadow brdr">
+        <img class="card-img-top">
+        <div class="card-body backgr">
+          <div class="card-text" *ngIf="list==[]; else notNew">
 
-          <div class="inputField">
+            <div class="inputField">
+              <mat-form-field appearance="outline">
+                <mat-label>Nazwa</mat-label>
+                <input matInput formControlName="name" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Data wykonania</mat-label>
+                <input matInput type="date" formControlName="dueDate" />
+              </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Nazwa</mat-label>
-              <input matInput formControlName="name"/>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Data wykonania</mat-label>
-              <input matInput type="date" formControlName="dueDate" />
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Opis</mat-label>
-              <textarea matInput formControlName="description">
+              <mat-form-field appearance="outline">
+                <mat-label>Opis</mat-label>
+                <textarea matInput formControlName="description">
                 </textarea>
-            </mat-form-field>
+              </mat-form-field>
 
 
 
-          </div>
-          <div class="addBtn">
-            <button mat-fab color="primary" (click)="onAddList()"><i class="material-icons">
-                add
-              </i></button> <br>
-          </div>
-
-
-        </div>
-        <ng-template #notNew>
-          <div class="card-text listCard" (click)="onClickList(list.id)">
-            <div class="title">
-              {{list.name}} <br>
+            </div>
+            <div class="addBtn">
+              <button mat-fab color="primary" (click)="onAddList()"><i class="material-icons">
+                  add
+                </i></button> <br>
             </div>
 
-            <div class="descrip">
+
+          </div>
+          <ng-template #notNew>
+
+            <div *ngIf="!editList else edit" class="card-text listCard">
+
+              <i class="material-icons edit " (click)="onEdit(list)">
+                edit
+              </i>
+              <i class="material-icons delete " (click)="onDelete(list.id)">
+                clear
+              </i>
+              <div class="title" (click)="onClickList(list.id)">
+                {{list.name}} <br>
+              </div>
+
+              <div class="descrip">
                 <i class="material-icons">
-                    date_range
-                    </i> {{list.dueDate}}<br>
-</div>
-            <div class="descrip">
-              {{list.description}}<br>
+                  date_range
+                </i> {{list.dueDate}}<br>
+              </div>
+              <div class="descrip">
+                {{list.description}}<br>
+              </div>
             </div>
+            <ng-template #edit>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nazwa</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+            </ng-template>
+          </ng-template>
+          <div class="d-flex justify-content-between align-items-center">
 
-            
 
           </div>
-        </ng-template>
-        <div class="d-flex justify-content-between align-items-center">
-
-
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </form>

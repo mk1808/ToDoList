@@ -18,6 +18,7 @@ export class ManyListsViewComponent implements OnInit {
   allListTable:List[];
   newListForm:FormGroup;
   newList:List=new List;
+  editList:boolean=false;
   constructor( private todo:ToDoService,private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute) { }
 
@@ -41,7 +42,7 @@ export class ManyListsViewComponent implements OnInit {
 
   }
 
-  to2DTable(table: any[]) {
+  to2DTable(table: List[]) {
     
     let myRow: any[] = [];
     let i: number = 1;
@@ -113,5 +114,17 @@ onClickList(id:number){
   this.router.navigate(['../list/'+ id]);
 
 
+}
+
+onEdit(list:List){
+  this.editList=true;
+}
+
+onDelete(id:any){
+this.todo.deleteList(id).subscribe(x=>
+  {
+    console.log(x);
+    this.ngOnInit();
+  })
 }
 }
