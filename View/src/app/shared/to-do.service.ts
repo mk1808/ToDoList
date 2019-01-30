@@ -19,9 +19,9 @@ public createList(list:List): Observable<any> {
   JSON.stringify(list));
 }
 
-public deleteTask(id): Observable<any> {
+public deleteTask(task): Observable<any> {
   return this.http.post<any>('http://localhost/todo/controllers/deleteTask.php',
-  JSON.stringify(id));
+  JSON.stringify(task));
 }
 
 public deleteList(id): Observable<any> {

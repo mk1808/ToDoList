@@ -104,7 +104,7 @@ export class ListComponent implements OnInit {
 
   onDelete(task: Task) {
     console.log(task.id);
-    this.todo.deleteTask(task.id).subscribe(x=>
+    this.todo.deleteTask(task).subscribe(x=>
       {
         console.log(x);
         this.ngOnInit();
