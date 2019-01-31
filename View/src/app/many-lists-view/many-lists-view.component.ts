@@ -145,6 +145,11 @@ onEditList(list:any){
   list.editList=false;
   console.log(list);
   this.editList=false;
+
+  this.todo.updateList(list).subscribe(x=>
+    {
+      console.log(x);
+    })
   
 }
 }

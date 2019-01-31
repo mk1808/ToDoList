@@ -49,4 +49,10 @@ public updateTask(task:Task): Observable<Task> {
   return this.http.post<any>('http://localhost/todo/controllers/updateTask.php',
   JSON.stringify(task));
 }
+
+public updateList(list:List): Observable<List> {
+  return this.http.post<any>('http://localhost/todo/controllers/updateList.php',
+  JSON.stringify(list));
+}
+
 }

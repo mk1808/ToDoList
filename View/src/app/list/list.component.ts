@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
 
 
       });
-    });
+    },e=>{});
 
 
 
