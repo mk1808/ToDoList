@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ManyListsViewComponent } from './many-lists-view/many-lists-view.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {  HttpClientModule } from '@angular/common/http';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {  HttpClientModule } from '@angular/common/http';
     FooterComponent,
     LayoutComponent,
     ListViewComponent,
-    ManyListsViewComponent
+    ManyListsViewComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
