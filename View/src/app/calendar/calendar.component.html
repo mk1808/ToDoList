@@ -1,3 +1,15 @@
-<p>
-  calendar works!
-</p>
+<h1 class="month">{{displayMonthAndYear}}</h1>
+<div fxLayout='column'>
+  <div fxLayout='row'>
+    <div  *ngFor="let day of dayNames" class="dayName" fxFlex="auto">{{day}}</div>
+  </div>
+  <div fxLayout='row' *ngFor='let calendarRow of calendarCellsTable'>
+    <div *ngFor="let day of calendarRow" fxFlex="auto"
+     [ngClass]="[day.nowMonth?'nowMonth':'notNowMonth', day.today?'today':'']">
+     {{day.number}}<br>
+    
+    </div>
+  </div>
+</div>
+<button (click)="prevMonth()">Poprzedni miesiąc</button>
+<button (click)="nextMonth()">Następny miesiąc</button>
