@@ -40,6 +40,12 @@ public getTasksForList(id): Observable<any> {
 
 }
 
+
+public getListsForDay(day): Observable<any> {
+  return this.http.get<any>('http://localhost/todo/controllers/getListsForDay.php?dueDate='+day);
+
+}
+
 public getListDetails(id): Observable<List> {
   return this.http.get<any>('http://localhost/todo/controllers/getListDetails.php?id='+id);
 
@@ -54,5 +60,7 @@ public updateList(list:List): Observable<List> {
   return this.http.post<any>('http://localhost/todo/controllers/updateList.php',
   JSON.stringify(list));
 }
+
+
 
 }

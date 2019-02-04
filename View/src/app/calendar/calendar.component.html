@@ -7,9 +7,19 @@
     <div *ngFor="let day of calendarRow" fxFlex="auto"
      [ngClass]="[day.nowMonth?'nowMonth':'notNowMonth', day.today?'today':'']">
      {{day.number}}<br>
+     <app-day [date]='day.date' class="listStyle"></app-day>
     
     </div>
   </div>
 </div>
-<button (click)="prevMonth()">Poprzedni miesiąc</button>
-<button (click)="nextMonth()">Następny miesiąc</button>
+<div fxLayout='row' fxLayoutAlign="space-between center">
+<button  mat-raised-button (click)="prevMonth()" class="btnPrevNext btnPrev">
+    <i class="material-icons">
+        arrow_back
+        </i> Poprzedni miesiąc</button>
+<button  mat-raised-button (click)="nextMonth()" class="btnPrevNext btnNext">Następny miesiąc
+    <i class="material-icons">
+        arrow_forward
+        </i>
+</button>
+</div>

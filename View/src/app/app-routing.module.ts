@@ -6,7 +6,7 @@ import { ManyListsViewComponent } from './many-lists-view/many-lists-view.compon
 import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
-  { path: 'list/:id,', component: ListViewComponent },
+  { path: 'list/:id', component: ListViewComponent },
   { path: 'lists', component:ManyListsViewComponent},
   { path: 'calendar', component:CalendarComponent}
 ];

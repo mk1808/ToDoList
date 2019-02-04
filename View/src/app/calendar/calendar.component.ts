@@ -69,7 +69,7 @@ generateTable() {
     if (i >= firstMonthDay - 1) {
       
       day.nowMonth=(this.month==this.nowMonth);
-      day.date=this.year+'-'+this.month+'-'+(i - firstMonthDay + 2);
+      day.date=this.year+'-'+(this.month+1)+'-'+(i - firstMonthDay + 2);
       day.number=i - firstMonthDay + 2;
       if (this.year === this.now.getFullYear() && this.month === this.now.getMonth() && this.day === i - firstMonthDay + 2) {
         day.today=true;
@@ -84,7 +84,7 @@ generateTable() {
       if(this.month==0){
         day.date = (this.year-1)+'-12-'+day.number;
       } else   {
-        day.date = (this.year)+'-'+(this.month-1)+'-'+day.number;
+        day.date = (this.year)+'-'+(this.month)+'-'+day.number;
 
       }
       calendarRow.push(day);
@@ -96,11 +96,11 @@ generateTable() {
     day.number = i - calendarRowlength + 1;
     day.nowMonth=false;
     day.today=false;
-    if(this.month==12){
+    if(this.month==11){
       day.date=(this.year+1)+'-1-'+day.number;
     }
     else {
-      day.date=(this.year)+'-'+(this.month+1)+'-'+day.number;
+      day.date=(this.year)+'-'+(this.month+2)+'-'+day.number;
     }
     calendarRow.push(day);
   }

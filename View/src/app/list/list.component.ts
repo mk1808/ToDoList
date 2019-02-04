@@ -26,8 +26,7 @@ export class ListComponent implements OnInit {
 
   constructor(private todo: ToDoService, private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log("aaa", this.id);
+  
   }
 
   ngOnInit() {
@@ -36,6 +35,13 @@ export class ListComponent implements OnInit {
 
     });
 
+    /*this.route.queryParams.subscribe(params => {
+      this.id= params['id'];
+      console.log(this.id); 
+  });*/
+   this.id = this.route.snapshot.paramMap.get('id');
+   console.log("aaa", this.id);
+   
     this.todo.getListDetails(this.id).subscribe(x => {
       console.log(x);
       this.list = x;

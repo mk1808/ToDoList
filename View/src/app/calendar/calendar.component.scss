@@ -3,12 +3,17 @@ div>div>div{
     width:14.28vw;
     text-align: center;
     background-color: #c5c5c5;
-    height:50px;
+    height:80px;
     vertical-align: middle;
 }
 
 .nowMonth{
 
+}
+
+.listStyle{
+    font-size: 10px;
+    background-color: #b9bd7e;
 }
 
 .today{
@@ -31,4 +36,20 @@ div>div>div{
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.btnPrevNext{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color:gray;
+    font-size: 20px;
+    height: 44px;
+}
+
+.btnNext{
+    margin-right:15px;
+}
+
+.btnPrev{
+    margin-left:15px;
 }

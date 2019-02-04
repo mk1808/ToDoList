@@ -15,6 +15,7 @@ import { ManyListsViewComponent } from './many-lists-view/many-lists-view.compon
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {  HttpClientModule } from '@angular/common/http';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DayComponent } from './calendar/day/day.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     LayoutComponent,
     ListViewComponent,
     ManyListsViewComponent,
-    CalendarComponent
+    CalendarComponent,
+    DayComponent
   ],
   imports: [
     BrowserModule,
