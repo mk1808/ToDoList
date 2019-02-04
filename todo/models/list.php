@@ -51,8 +51,6 @@ else{
 }
 
 public function getLists(){
-
-
     $query = 'SELECT * FROM list'.';';
     $stmt = $this->conn->prepare($query);
 
@@ -62,17 +60,58 @@ public function getLists(){
     while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         $list=(object)$row;
         array_push($ans,$list);
-        
     }    
-    
-        
         return $ans;
-    
     }
     else{
         return false;
     }
 }
+
+public function getListsForDay(){
+    $this->dueDate=strval(htmlspecialchars(strip_tags($this->dueDate)));
+    $query = 'SELECT * FROM list WHERE dueDate = "'.$this->dueDate.'";';
+    $stmt = $this->conn->prepare($query);
+
+
+    if ($stmt->execute()) { 
+    $ans=array();
+    while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+        $list=(object)$row;
+        array_push($ans,$list);
+    }    
+        return $ans;
+    }
+    else{
+        return false;
+    }
+}
+
+
+
+public function update(){
+    $this->id=strval(htmlspecialchars(strip_tags($this->id)));
+    $this->name=strval(htmlspecialchars(strip_tags($this->name)));
+    $this->dueDate=strval(htmlspecialchars(strip_tags($this->dueDate)));
+    $this->description=strval(htmlspecialchars(strip_tags($this->description)));
+
+
+    $query = 'UPDATE list SET name = "'.$this->name.'",  dueDate = "'.$this->dueDate.'",
+    description="'.$this->description.'" WHERE ID = '.$this->id.';';
+
+
+    $stmt = $this->conn->prepare($query);
+
+
+    if($stmt->execute()){
+
+        return 1;
+    }
+
+    return -1;
+}
+
+
 public function getListDetails(){
     $this->id=strval(htmlspecialchars(strip_tags($this->id)));
 
