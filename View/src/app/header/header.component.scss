@@ -15,3 +15,27 @@
     padding-top:8px;
     padding-bottom: 8px;
 }
+
+.nav-item, .navbar-nav{
+    display:inline-block;
+}
+
+.navPosition{
+    padding: 20px;
+    background-color:rgba( 171, 155, 104, 0.8);
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
+.active{
+    background-color:rgba( 171, 155, 104, 1);
+}
+
+a:not([href]):not([tabindex])
+{
+    color:black;
+}
+
+li:focus{
+    outline: none;
+}

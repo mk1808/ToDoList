@@ -16,6 +16,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import {  HttpClientModule } from '@angular/common/http';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './calendar/day/day.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { DayComponent } from './calendar/day/day.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
