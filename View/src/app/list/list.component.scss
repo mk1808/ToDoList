@@ -67,3 +67,9 @@
 .deleteIcon:hover{
   background-color: rgba(142, 120, 49, 0.4);
 }
+
+@media only screen and (max-width:439px){
+  .myList{
+    width: 90%;
+  }
+}

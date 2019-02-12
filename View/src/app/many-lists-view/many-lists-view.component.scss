@@ -4,7 +4,8 @@
 
 .brdr{
     border:none;
-    min-height:200px;
+    //min-height:200px;
+    min-height: 100%;
 }
 
 
@@ -19,9 +20,9 @@
   .inputField{
     margin-right:auto;
     margin-left:auto;
-    height:100px;
+   // height:100px;
     width:fit-content;
-    overflow-y:scroll;
+  //  overflow-y:scroll;
   }
 
   .mat-form-field{
@@ -70,4 +71,23 @@
 
 .listCard .newList{
     text-align:left;
+}
+
+.lastRow:last-child{
+  place-content:flex-start!important;
+}
+
+
+.lastRow:last-child .lastRow1{
+ 
+  margin-left: calc(10% / 6);
+    margin-right: calc(10% / 6) !important;
+}
+
+@media only screen and (max-width:959px){
+  .lastRow1{
+ 
+    margin-left: calc(10% / 6);
+      margin-right: calc(10% / 6) !important;
+  }
 }

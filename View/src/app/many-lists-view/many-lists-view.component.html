@@ -1,12 +1,13 @@
+<div fxLayout="column"  fxLayoutGap="2%">
+<div fxLayout="row" fxLayoutAlign="space-around stretch"fxLayoutGap="0px" fxLayoutGap.lt-md="2%" fxLayout.lt-md="column"
+class="lastRow" *ngFor="let row of TTable">
+  <div fxFlex="30%" class="lastRow1" fxFlex.lt-md="100%" *ngFor="let list of row ">
+    <div class="card box-shadow brdr">
+      <img class="card-img-top">
+      <div class="card-body backgr">
 
-  <div fxLayout="row" *ngFor="let row of TTable">
-    <div class="col-md-4" *ngFor="let list of row ">
-      <div class="card mb-4 box-shadow brdr">
-        <img class="card-img-top">
-        <div class="card-body backgr">
-            
-          <div class="card-text" *ngIf="list==[]; else notNew">
-              <form [formGroup]="newListForm"> 
+        <div class="card-text" *ngIf="list==[]; else notNew">
+          <form [formGroup]="newListForm">
             <div class="inputField">
               <mat-form-field appearance="outline">
                 <mat-label>Nazwa</mat-label>
@@ -31,68 +32,66 @@
                   add
                 </i></button> <br>
             </div>
-</form>
+          </form>
 
-          </div>
-          
-          <ng-template #notNew>
+        </div>
 
-            <div *ngIf="!list.editList else edit" class="card-text listCard newList">
+        <ng-template #notNew>
 
-              <i class="material-icons edit " (click)="onEdit(list)">
-                edit
-              </i>
-              <i class="material-icons delete " (click)="onDelete(list)">
-                clear
-              </i>
-              <div class="title" (click)="onClickList(list.id)">
-                {{list.name}} <br>
-              </div>
+          <div *ngIf="!list.editList else edit" class="card-text listCard newList">
 
-              <div class="descrip">
-                <i class="material-icons">
-                  date_range
-                </i> {{list.dueDate}}<br>
-              </div>
-              <div class="descrip">
-                {{list.description}}<br>
-              </div>
+            <i class="material-icons edit " (click)="onEdit(list)">
+              edit
+            </i>
+            <i class="material-icons delete " (click)="onDelete(list)">
+              clear
+            </i>
+            <div class="title" (click)="onClickList(list.id)">
+              {{list.name}} <br>
             </div>
-            <ng-template #edit>
-                <form [formGroup]="editListForm">
-                <mat-form-field appearance="outline">
-                    <mat-label>Nazwa</mat-label>
-                    <input matInput 
-                    formControlName="name" [(ngModel)]="list.name"/>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Data wykonania</mat-label>
-                      <input matInput type="date"
-                      formControlName="dueDate"[(ngModel)]="list.dueDate" />
-                    </mat-form-field>
-      
-                    <mat-form-field appearance="outline">
-                      <mat-label>Opis</mat-label>
-                      <textarea matInput 
-                      formControlName="description" [(ngModel)]="list.description">
-                      </textarea>
-                    </mat-form-field>
 
-                    <div class="addBtn">
-                        <button mat-fab color="primary" (click)="onEditList(list)">
-                          <i class="material-icons">
-                            add
-                          </i></button> <br>
-                      </div>
-</form>
-            </ng-template>
-          </ng-template>
-          <div class="d-flex justify-content-between align-items-center">
-
-
+            <div class="descrip">
+              <i class="material-icons">
+                date_range
+              </i> {{list.dueDate}}<br>
+            </div>
+            <div class="descrip">
+              {{list.description}}<br>
+            </div>
           </div>
+          <ng-template #edit>
+            <form [formGroup]="editListForm">
+              <mat-form-field appearance="outline">
+                <mat-label>Nazwa</mat-label>
+                <input matInput formControlName="name" [(ngModel)]="list.name" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Data wykonania</mat-label>
+                <input matInput type="date" formControlName="dueDate" [(ngModel)]="list.dueDate" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Opis</mat-label>
+                <textarea matInput formControlName="description" [(ngModel)]="list.description">
+                      </textarea>
+              </mat-form-field>
+
+              <div class="addBtn">
+                <button mat-fab color="primary" (click)="onEditList(list)">
+                  <i class="material-icons">
+                    add
+                  </i></button> <br>
+              </div>
+            </form>
+          </ng-template>
+        </ng-template>
+        <div class="d-flex justify-content-between align-items-center">
+
+
         </div>
       </div>
     </div>
-
   </div>
+
+</div>
+</div>
