@@ -17,7 +17,7 @@ import {  HttpClientModule } from '@angular/common/http';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './calendar/day/day.component';
 import { RouterModule } from '@angular/router';
-
+import { ParallaxModule, ParallaxConfig } from 'ngx-parallax';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ParallaxModule
     
     
   ],

@@ -15,11 +15,12 @@ export class ManyListsViewComponent implements OnInit {
   listString: string[][] = [['11', '12', '13'], ['21', '22', '23'], ['31', '32', '33']];
   listTable: string[] = ['11', '12', '13', '21', '22', '23', '31', '32', '33', '41'];
   TTable: any[][] = [];
-  allListTable:List[];
+  allListTable:any[]=[];
   newListForm:FormGroup;
   editListForm:FormGroup;
   newList:List=new List;
   editList:boolean=false;
+  myRow: any[] = [];
   constructor( private todo:ToDoService,private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute) { }
   
@@ -43,41 +44,52 @@ export class ManyListsViewComponent implements OnInit {
     
       this.allListTable=x;
         this.to2DTable(this.allListTable);
+    },
+    e=>{
+      console.log("aa");
+      
+      //this.allListTable.push();
+
+      //this.myRow.push("");
+      //this.allListTable.push(this.myRow);
+
+      this.to2DTable([]);
     })
 
   
 
   }
 
-  to2DTable(table: List[]) {
+  to2DTable(table: any[]) {
     this.TTable=[];
-    let myRow: any[] = [];
+    
     let i: number = 1;
     let j: number = 0;
     let add: boolean = true;
     let ii: number;
-    myRow.push("");
+    this.myRow=[];
+    this.myRow.push("");
     table.forEach(element => {
     //  console.log(myRow);
      
       if (i < 3) {
 
         i++;
-        myRow.push(element);
+        this.myRow.push(element);
       }
       else {
         i = 0;
-        this.TTable.push(myRow);
+        this.TTable.push(this.myRow);
 
-        myRow = [];
+        this.myRow = [];
         i++;
-        myRow.push(element);
+        this.myRow.push(element);
       }
 
 
 
     });
-    this.TTable.push(myRow);
+    this.TTable.push(this.myRow);
     console.log(this.TTable);
   }
 

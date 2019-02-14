@@ -8,7 +8,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 const routes: Routes = [
   { path: 'list/:id', component: ListViewComponent },
   { path: 'lists', component:ManyListsViewComponent},
-  { path: 'calendar', component:CalendarComponent}
+  { path: 'calendar', component:CalendarComponent},
+  { path:"**", redirectTo: 'lists'}
 ];
 
 @NgModule({
