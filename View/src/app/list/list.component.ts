@@ -61,7 +61,10 @@ export class ListComponent implements OnInit {
 
 
       });
-    },e=>{});
+    },e=>{
+      
+      this.tasks = []
+    });
 
 
 
@@ -114,6 +117,9 @@ export class ListComponent implements OnInit {
       {
         console.log(x);
         this.ngOnInit();
+      },e=>{
+        //this.ngOnInit();
+
       })
 
 

@@ -24,14 +24,15 @@
             
         </div>
         <div *ngFor="let task of tasks; let i=index;" class="bottomList">
+            
             <mat-checkbox [checked]="task.status"     
-        
+    
             class="checkB doneTask" 
              color="primary" 
              (change)="onChange($event, task, i)" 
         [class.doneTask]="task.status==1?true:false"
           
-            >{{task.name}}</mat-checkbox>
+            ><span>{{task.name}}</span></mat-checkbox>
 
             <i class="material-icons deleteIcon " (click)="onDelete(task)">
                 clear

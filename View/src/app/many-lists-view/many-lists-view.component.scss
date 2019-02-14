@@ -74,6 +74,11 @@
     text-align:left;
 }
 
+.lastRow{
+  margin-bottom: 50px;
+    margin-top: 50px;
+}
+
 .lastRow:last-child{
   place-content:flex-start!important;
 }

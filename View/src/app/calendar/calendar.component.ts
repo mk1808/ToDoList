@@ -18,8 +18,8 @@ export class CalendarComponent implements OnInit {
   calendarCellsTable: CalendarDay[][] = [];
 
   constructor() {
-    
-}
+
+  }
 
   ngOnInit() {
 
@@ -28,112 +28,113 @@ export class CalendarComponent implements OnInit {
 
     this.day = this.now.getDate();
     this.month = this.now.getMonth();
-    this.nowMonth=this.month;
+    this.nowMonth = this.month;
     this.year = this.now.getFullYear();
     this.generateMonthName();
     this.generateTable();
 
-}
-
-generateMonthName() {
-  this.displayMonthAndYear = this.monthNames[this.month] + ' ' + this.year;
-}
-
-generateTable() {
-  const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
-  const tempDate = new Date(this.year, this.month, 1);
-  let firstMonthDay = tempDate.getDay();
-
-  let daysInPrevMonth;
-  
-  if (this.month == 0) {
-    daysInPrevMonth = new Date(this.year - 1, 12, 0).getDate();
-  }
-  else {
-    daysInPrevMonth = new Date(this.year, this.month, 0).getDate();
   }
 
-  if (firstMonthDay === 0) {
-    firstMonthDay = 7;
+  generateMonthName() {
+    this.displayMonthAndYear = this.monthNames[this.month] + ' ' + this.year;
   }
-  const allCellsInMonth = daysInMonth + firstMonthDay - 1;
-  this.calendarCellsTable = [];
-  let calendarRow = [];
-  for (let i = 0; i < allCellsInMonth; i++) {
-    let day=new CalendarDay;
-    
-    if (i != 0 && i % 7 == 0) {
-      this.calendarCellsTable.push(calendarRow);
-      calendarRow = [];
-    }
-    if (i >= firstMonthDay - 1) {
-      
-      day.nowMonth=(this.month==this.nowMonth);
-      day.date=this.year+'-'+(this.month+1)+'-'+(i - firstMonthDay + 2);
-      day.number=i - firstMonthDay + 2;
-      if (this.year === this.now.getFullYear() && this.month === this.now.getMonth() && this.day === i - firstMonthDay + 2) {
-        day.today=true;
-      } else {
-        day.today=false;
-      }
-      calendarRow.push(day);
-    } else {
-      day.nowMonth=false;
-      day.today=false;
-      day.number=daysInPrevMonth - firstMonthDay + 2 + i;
-      if(this.month==0){
-        day.date = (this.year-1)+'-12-'+day.number;
-      } else   {
-        day.date = (this.year)+'-'+(this.month)+'-'+day.number;
 
-      }
-      calendarRow.push(day);
-    }
-  }
-  const calendarRowlength = calendarRow.length;
-  for (let i = calendarRowlength; i < 7; i++) {
-    let day = new CalendarDay;
-    day.number = i - calendarRowlength + 1;
-    day.nowMonth=false;
-    day.today=false;
-    if(this.month==11){
-      day.date=(this.year+1)+'-1-'+day.number;
+  generateTable() {
+    const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+    const tempDate = new Date(this.year, this.month, 1);
+    let firstMonthDay = tempDate.getDay();
+
+    let daysInPrevMonth;
+
+    if (this.month == 0) {
+      daysInPrevMonth = new Date(this.year - 1, 12, 0).getDate();
     }
     else {
-      day.date=(this.year)+'-'+(this.month+2)+'-'+day.number;
+      daysInPrevMonth = new Date(this.year, this.month, 0).getDate();
     }
-    calendarRow.push(day);
-  }
-  this.calendarCellsTable.push(calendarRow);
-}
 
-prevMonth() {
-  this.month--;
-  if (this.month < 0) {
-    this.month = 11;
-    this.year--;
-  }
-  this.generateMonthName();
-  this.generateTable();
-}
+    if (firstMonthDay === 0) {
+      firstMonthDay = 7;
+    }
+    const allCellsInMonth = daysInMonth + firstMonthDay - 1;
+    this.calendarCellsTable = [];
+    let calendarRow = [];
+    for (let i = 0; i < allCellsInMonth; i++) {
+      let day = new CalendarDay;
 
-nextMonth() {
-  this.month++;
-  if (this.month > 11) {
-    this.month = 0;
-    this.year++;
+      if (i != 0 && i % 7 == 0) {
+        this.calendarCellsTable.push(calendarRow);
+        calendarRow = [];
+      }
+      if (i >= firstMonthDay - 1) {
+
+        day.nowMonth = (this.month == this.nowMonth);
+        day.date = this.year + '-' + (this.month + 1) + '-' + (i - firstMonthDay + 2);
+        day.number = i - firstMonthDay + 2;
+        if (this.year === this.now.getFullYear()
+          && this.month === this.now.getMonth() && this.day === i - firstMonthDay + 2) {
+          day.today = true;
+        } else {
+          day.today = false;
+        }
+        calendarRow.push(day);
+      } else {
+        day.nowMonth = false;
+        day.today = false;
+        day.number = daysInPrevMonth - firstMonthDay + 2 + i;
+        if (this.month == 0) {
+          day.date = (this.year - 1) + '-12-' + day.number;
+        } else {
+          day.date = (this.year) + '-' + (this.month) + '-' + day.number;
+
+        }
+        calendarRow.push(day);
+      }
+    }
+    const calendarRowlength = calendarRow.length;
+    for (let i = calendarRowlength; i < 7; i++) {
+      let day = new CalendarDay;
+      day.number = i - calendarRowlength + 1;
+      day.nowMonth = false;
+      day.today = false;
+      if (this.month == 11) {
+        day.date = (this.year + 1) + '-1-' + day.number;
+      }
+      else {
+        day.date = (this.year) + '-' + (this.month + 2) + '-' + day.number;
+      }
+      calendarRow.push(day);
+    }
+    this.calendarCellsTable.push(calendarRow);
   }
-  this.generateMonthName();
-  this.generateTable();
-}
+
+  prevMonth() {
+    this.month--;
+    if (this.month < 0) {
+      this.month = 11;
+      this.year--;
+    }
+    this.generateMonthName();
+    this.generateTable();
+  }
+
+  nextMonth() {
+    this.month++;
+    if (this.month > 11) {
+      this.month = 0;
+      this.year++;
+    }
+    this.generateMonthName();
+    this.generateTable();
+  }
 
 }
 
 class CalendarDay {
-number: number;
-date: string;
-nowMonth: boolean;
-today: boolean;
+  number: number;
+  date: string;
+  nowMonth: boolean;
+  today: boolean;
 }
- 
+
 
