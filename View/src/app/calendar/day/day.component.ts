@@ -15,10 +15,10 @@ lists:List[]=[];
   constructor(private todo:ToDoService, private router: Router, private route: ActivatedRoute) { }
   @Input() set date(day:string){
     this.dayDate=day;
+    console.log(this.dayDate)
     this.todo.getListsForDay(day).subscribe(x=>
       {
         this.lists=x;
-        console.log(x);
       },
       e=>{
         console.log(e);

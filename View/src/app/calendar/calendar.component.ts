@@ -69,7 +69,7 @@ export class CalendarComponent implements OnInit {
       if (i >= firstMonthDay - 1) {
 
         day.nowMonth = (this.month == this.nowMonth);
-        day.date = this.year + '-' + (this.month + 1) + '-' + (i - firstMonthDay + 2);
+        day.date = this.year + '-' +this.addZero(this.month + 1) + '-' + this.addZero(i - firstMonthDay + 2);
         day.number = i - firstMonthDay + 2;
         if (this.year === this.now.getFullYear()
           && this.month === this.now.getMonth() && this.day === i - firstMonthDay + 2) {
@@ -77,18 +77,18 @@ export class CalendarComponent implements OnInit {
         } else {
           day.today = false;
         }
-        calendarRow.push(day);
+        calendarRow.push(day); console.log(day)
       } else {
         day.nowMonth = false;
         day.today = false;
         day.number = daysInPrevMonth - firstMonthDay + 2 + i;
         if (this.month == 0) {
-          day.date = (this.year - 1) + '-12-' + day.number;
+          day.date = (this.year - 1) + '-12-' + this.addZero(day.number);
         } else {
-          day.date = (this.year) + '-' + (this.month) + '-' + day.number;
+          day.date = (this.year) + '-' + this.addZero(this.month) + '-' + this.addZero(day.number);
 
         }
-        calendarRow.push(day);
+        calendarRow.push(day);console.log(day)
       }
     }
     const calendarRowlength = calendarRow.length;
@@ -98,12 +98,12 @@ export class CalendarComponent implements OnInit {
       day.nowMonth = false;
       day.today = false;
       if (this.month == 11) {
-        day.date = (this.year + 1) + '-1-' + day.number;
+        day.date = (this.year + 1) + '-01-' + this.addZero(day.number);
       }
       else {
-        day.date = (this.year) + '-' + (this.month + 2) + '-' + day.number;
+        day.date = (this.year) + '-' + this.addZero(this.month + 2) + '-' +this.addZero(day.number);
       }
-      calendarRow.push(day);
+      calendarRow.push(day);console.log(day)
     }
     this.calendarCellsTable.push(calendarRow);
   }
@@ -126,6 +126,12 @@ export class CalendarComponent implements OnInit {
     }
     this.generateMonthName();
     this.generateTable();
+  }
+
+  addZero(num){
+    if(num<10)
+    return '0'+num;
+    else return num;
   }
 
 }
